@@ -94,10 +94,10 @@ export const Home = () => {
             style={{ backgroundColor: "rgba(0, 0, 0, .17)" }}
           ></div>
           <div className="flex flex-col justify-between max-w-[950px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
               Ваше доверие -
             </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit self-end">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit self-end">
               Наша <span className="text-[#FF6402]">гарантия</span>
             </h1>
           </div>
@@ -151,7 +151,7 @@ export const Home = () => {
         </section>
         <section ref={blocks.calc}>
           <div className="flex flex-col justify-between my-10">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px]">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px]">
               Калькулятор БГ
             </h1>
           </div>
@@ -161,7 +161,10 @@ export const Home = () => {
             className="flex flex-col p-10 gap-5 m-auto max-w-[600px] border-[#383838] border-4 bg-transparent rounded-[30px]"
           >
             <div className="flex flex-col justify-start">
-              <label htmlFor="" className="font-semibold text-2xl w-fit">
+              <label
+                htmlFor=""
+                className="font-semibold text-base lg:text-2xl w-fit text-start"
+              >
                 Размер банковской гарантии, ₽
               </label>
               <input
@@ -172,7 +175,10 @@ export const Home = () => {
               />
             </div>
             <div className="flex flex-col justify-start">
-              <label htmlFor="" className="font-semibold text-2xl w-fit">
+              <label
+                htmlFor=""
+                className="font-semibold text-base lg:text-2xl w-fit text-start"
+              >
                 Срок банковской гарантии, мес
               </label>
               <input
@@ -183,7 +189,10 @@ export const Home = () => {
               />
             </div>
             <div className="flex flex-col justify-start">
-              <label htmlFor="" className="font-semibold text-2xl w-fit">
+              <label
+                htmlFor=""
+                className="font-semibold text-base lg:text-2xl w-fit text-start"
+              >
                 Бенецифиар по банковской гарантии
               </label>
               <div className="select">
@@ -199,7 +208,10 @@ export const Home = () => {
               </div>
             </div>
             <div className="flex flex-col justify-start">
-              <label htmlFor="" className="font-semibold text-2xl w-fit">
+              <label
+                htmlFor=""
+                className="font-semibold text-base lg:text-2xl w-fit text-start"
+              >
                 Финансовая устойчивость
               </label>
               <div className="select">
@@ -215,7 +227,10 @@ export const Home = () => {
               </div>
             </div>
             <div className="flex flex-col justify-start">
-              <label htmlFor="" className="font-semibold text-2xl w-fit">
+              <label
+                htmlFor=""
+                className="font-semibold text-base lg:text-2xl w-fit text-start"
+              >
                 Обеспечение
               </label>
               <div className="select">
@@ -243,10 +258,10 @@ export const Home = () => {
         </section>
         <section>
           <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
               Виды банковских
             </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] text-[#FF6402] w-fit self-end">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] text-[#FF6402] w-fit self-end">
               Гарантий
             </h1>
           </div>
@@ -299,10 +314,10 @@ export const Home = () => {
         </section>
         <section>
           <div className="flex flex-col justify-between max-w-[800px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
               Выданные
             </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] text-[#FF6402] w-fit self-end">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] text-[#FF6402] w-fit self-end">
               Гарантии
             </h1>
           </div>
@@ -319,7 +334,7 @@ export const Home = () => {
         </section>
         <section id="form" ref={blocks.contactus}>
           <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
               Остались <span className="text-[#FF6402]">Вопросы?</span>
             </h1>
           </div>

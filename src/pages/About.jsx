@@ -53,7 +53,7 @@ export default () => {
     <>
       <section>
         <div className="flex flex-col justify-between w-fit m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit">
+          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
             О нас
           </h1>
         </div>
@@ -89,7 +89,7 @@ export default () => {
       {/* FAQ Section */}
       <section>
         <div className="flex flex-col justify-between w-fit m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit mx-auto">
+          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit mx-auto">
             FA<span className="text-[#FF6402]">Q</span>
           </h1>
           <p className="text-3xl">Ответы на часто-задаваемые вопросы</p>

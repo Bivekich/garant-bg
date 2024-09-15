@@ -3,7 +3,7 @@ export default () => {
     <>
       <section>
         <div className="flex flex-col justify-between w-fit m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[50px] lg:text-[100px] w-fit">
+          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
             Контакты
           </h1>
         </div>
