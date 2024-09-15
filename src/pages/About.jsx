@@ -53,12 +53,12 @@ export default () => {
     <>
       <section>
         <div className="flex flex-col justify-between w-fit m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
+          <h1 className="uppercase font-[BebasNeuee] font-bold m-auto text-[40px] md:text-[75px] lg:text-[100px] w-fit">
             О нас
           </h1>
         </div>
-        <div className="flex flex-col lg:flex-row justify-between max-w-[1200px]">
-          <p className="max-w-[1000px] text-3xl text-start">
+        <div className="flex flex-col lg:flex-row justify-between m-auto max-w-[1200px]">
+          <p className="max-w-[1000px] text-xl lg:text-3xl text-start">
             <b>Финансовая Компания Гарант-БГ</b> постоянно развивается и растет,
             наши специалисты ежегодно проходят обучение и семинары по повышению
             квалификации. В финансовой сфере работаем более 10 лет, со многими
@@ -80,7 +80,7 @@ export default () => {
           </p>
           <img
             src="/images/garantbgphoto.png"
-            className="w-1/2 h-full max-w-[580px] max-h-[580px]"
+            className="w-full lg:w-1/2 mt-5 lg:mt-0 h-full max-w-[580px] max-h-[580px]"
             alt=""
           />
         </div>

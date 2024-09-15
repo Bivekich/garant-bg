@@ -4,7 +4,7 @@ import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 export default () => {
   return (
     <>
-      <footer className="flex flex-row justify-between flex-wrap mt-20 gap-5">
+      <footer className="flex flex-row justify-between flex-wrap mt-20 gap-5 max-w-[1250px] m-auto">
         <div className="flex flex-col gap-5 w-fit">
           <span className="text-white text-s lg:text-xl w-fit">
             info@garant-bg.ru

@@ -101,11 +101,11 @@ export const Home = () => {
               Наша <span className="text-[#FF6402]">гарантия</span>
             </h1>
           </div>
-          <div className="flex flex-row gap-2 text-3xl font-semibold">
-            <img src="/images/tel.svg" className="w-[35px] h-[35px]" />8 (800)
-            600-45-92
-          </div>
           <div className="absolute left-0 bottom-0 w-full flex-wrap">
+            <div className="flex flex-row gap-2 text-3xl font-semibold ml-5">
+              <img src="/images/tel.svg" className="w-[35px] h-[35px]" />8 (800)
+              600-45-92
+            </div>
             <div className="m-5 border-t-2 border-white flex flex-col lg:flex-row">
               <div className="flex flex-row justify-between w-full lg:w-1/2">
                 <div className="flex flex-col justify-start p-5 max-w-[325px]">
