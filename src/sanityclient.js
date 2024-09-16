@@ -30,3 +30,17 @@ export async function getFAQ() {
   const faq = await client.fetch('*[_type == "faq"]');
   return faq;
 }
+export async function getAboutus() {
+  const query = `*[_type == "aboutus"][0]{
+    "image": image.asset->url,
+    title,
+    text,
+  }`;
+  const aboutus = await client.fetch(query);
+  return aboutus;
+}
+export async function getGarantes() {
+  const query = `*[_type == "garantes"][0]`;
+  const garantes = await client.fetch(query);
+  return garantes;
+}

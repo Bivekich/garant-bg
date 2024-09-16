@@ -22,14 +22,20 @@ export default () => {
                 Способы связи
               </span>
               <div className="flex flex-col justify-start">
-                <div className="flex flex-row gap-2 text-3xl font-semibold">
+                <a
+                  href="tel:88006004592"
+                  className="flex flex-row gap-2 text-3xl font-semibold text-white hover:text-white"
+                >
                   <img src="/images/tel.svg" className="w-[35px] h-[35px]" />8
                   (800) 600-45-92
-                </div>
-                <div className="flex flex-row gap-2 text-3xl font-semibold">
+                </a>
+                <a
+                  href="mailto:info@garant-bg.ru"
+                  className="flex flex-row gap-2 text-3xl font-semibold text-white hover:text-white"
+                >
                   <img src="/images/mail.svg" className="w-[35px] h-[35px]" />
                   info@garant-bg.ru
-                </div>
+                </a>
               </div>
             </div>
             <div className="flex w-full h-[350px] mx-auto justify-between flex-col rounded-[15px] px-[20px] py-[15px] border-[#383838] border-4 bg-transparent max-w-[530px]">

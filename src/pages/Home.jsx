@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getGivedgarantes, urlFor } from "../sanityclient";
+import { getGivedgarantes, urlFor, getGarantes } from "../sanityclient";
 
 export const Home = () => {
   // Скролл до калькулятора
@@ -24,6 +24,7 @@ export const Home = () => {
 
   // Выданные гарантии
   const [givedgarantesElements, setGivedgarantesElements] = useState([]);
+  const [garantes, setGarantes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +36,9 @@ export const Home = () => {
         }));
         setGivedgarantesElements(givedgarantesEls);
       }
+      const garantes_ = await getGarantes();
+
+      setGarantes(garantes_);
     };
 
     fetchData();
@@ -64,9 +68,26 @@ export const Home = () => {
     console.log(formData);
     let coef;
     if (formData.benef == "commercial") {
-      coef = 0.045;
+      // coef = 0.045;
+      if (formData.obesp == "yes") {
+        coef = 0.035;
+      } else {
+        if (formData.fin == "unsatisfactory") {
+          coef = 0.045;
+        } else {
+          coef = 0.04;
+        }
+      }
     } else {
-      coef = 0.03;
+      if (formData.obesp == "yes") {
+        coef = 0.025;
+      } else {
+        if (formData.fin == "unsatisfactory") {
+          coef = 0.035;
+        } else {
+          coef = 0.03;
+        }
+      }
     }
 
     const result = formData.size * (formData.time * coef);
@@ -147,18 +168,28 @@ export const Home = () => {
             style={{ backgroundColor: "rgba(0, 0, 0, .17)" }}
           ></div>
           <div className="flex flex-col justify-between max-w-[950px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit self-center">
               Ваше доверие -
             </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit self-end">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit self-center">
               Наша <span className="text-[#FF6402]">гарантия</span>
             </h1>
           </div>
           <div className="absolute left-0 bottom-0 w-full flex-wrap">
-            <div className="flex flex-row gap-2 text-3xl font-semibold ml-5">
+            <a
+              href="tel:88006004592"
+              className="flex flex-row gap-2 text-3xl font-semibold ml-5 text-white hover:text-white"
+            >
               <img src="/images/tel.svg" className="w-[35px] h-[35px]" />8 (800)
               600-45-92
-            </div>
+            </a>
+            <a
+              href="mailto:info@garant-bg.ru"
+              className="flex flex-row gap-2 text-3xl font-semibold ml-5 text-white hover:text-white"
+            >
+              <img src="/images/mail.svg" className="w-[35px] h-[35px]" />
+              info@garant-bg.ru
+            </a>
             <div className="m-5 border-t-2 border-white flex flex-col lg:flex-row">
               <div className="flex flex-row justify-between w-full lg:w-1/2">
                 <div className="flex flex-col justify-start p-5 max-w-[325px]">
@@ -172,7 +203,7 @@ export const Home = () => {
                 <span className="hidden lg:block h-full w-[1px] bg-white my-3"></span>
                 <div className="flex flex-col justify-start p-5 max-w-[325px]">
                   <span className="text-xl lg:text-3xl font-semibold w-fit text-start ">
-                    До 300млн ₽
+                    До 500 млн ₽
                   </span>
                   <span className="text-m lg:text-2xl font-base w-fit text-start">
                     Максимальный размер гарантии
@@ -311,58 +342,21 @@ export const Home = () => {
         </section>
         <section>
           <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit self-center">
               Виды банковских
             </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] text-[#FF6402] w-fit self-end">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] text-[#FF6402] w-fit self-center">
               Гарантий
             </h1>
           </div>
           <div className="flex flex-col gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
-            <p>Банковские гарантии бывают в основном четырех видов:</p>
+            <p>{garantes.par1}</p>
             <div>
-              <p>
-                <b>Тендерная гарантия</b> - необходима в госзакупках по 44-ФЗ.,
-                223-ФЗ., 615-ПП.РФ., если исполнитель не может внести
-                собственные денежные средства на р/счёт заказчика.
-              </p>
-              <p>Применима:</p>
-              <ul className="list-none">
-                <li>
-                  На обеспечение заявки в тендере - (гарантирует что победитель
-                  аукциона не откажется от заключения договора).
-                </li>
-                <li>
-                  На обеспечение исполнения контракта - (гарантирует что
-                  контракт будет выполнен).
-                </li>
-                <li>
-                  На возврат аванса - (гарантирует что поставщик выполнит свои
-                  договорные обязательства).
-                </li>
-                <li>
-                  На гарантийное обслуживание - (гарантирует качество
-                  выполненных работ).
-                </li>
-              </ul>
+              <p>{garantes.par2}</p>
             </div>
-            <p>
-              <b>Коммерческая гарантия</b> - применяется в основном в
-              коммерческих контрактах, которые заключаются вне закупок, за
-              исключением 223-ФЗ,. - (гарантирует выполнение поставки,
-              исполнения по контракту, возврат аванса, возврат инвестиций).
-            </p>
-            <p>
-              <b>Таможенная гарантия</b> - как правило, необходима тем кто
-              занимается перевозкой товаров через границу - (гарантирует оплату,
-              либо отсрочку таможенных пошлин).
-            </p>
-            <p>
-              <b>Налоговая гарантия</b> - применяется при отсрочке от уплаты
-              налогов - (гарантирует что налогоплательщик выплатит налог), для
-              освобождения от уплаты авансового платежа акциза - (только для
-              организации производителя алкогольной продукции).
-            </p>
+            <p>{garantes.par3}</p>
+            <p>{garantes.par4}</p>
+            <p>{garantes.par5}</p>
           </div>
         </section>
         <section>

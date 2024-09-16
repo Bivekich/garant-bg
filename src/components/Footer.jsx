@@ -6,13 +6,19 @@ export default () => {
     <>
       <footer className="flex flex-row justify-between flex-wrap mt-20 gap-5 max-w-[1250px] m-auto">
         <div className="flex flex-col gap-5 w-fit">
-          <span className="text-white text-s lg:text-xl w-fit">
+          <a
+            href="mailto:info@garant-bg.ru"
+            className="text-white text-s lg:text-xl w-fit text-white hover:text-white"
+          >
             info@garant-bg.ru
-          </span>
+          </a>
           <div className="flex flex-col justify-start w-fit">
-            <span className="text-xl lg:text-6xl text-white font-semibold w-fit ">
+            <a
+              href="tel:88006004592"
+              className="text-xl lg:text-6xl text-white font-semibold w-fit text-white hover:text-white"
+            >
               8 (800) 600-45-92
-            </span>
+            </a>
             <span className="text-s lg:text-xl text-gray-400 w-fit">
               Звонок по России бесплатный
             </span>
@@ -30,6 +36,7 @@ export default () => {
           <div className="flex flex-col gap-3">
             <FooterNavLink to="/">Главная</FooterNavLink>
             <FooterNavLink to="/about">О нас</FooterNavLink>
+            <FooterNavLink to="/contacts">Контакты</FooterNavLink>
             <FooterNavLink to="/calc">Калькулятор БГ</FooterNavLink>
           </div>
           <div className="flex flex-row gap-5">

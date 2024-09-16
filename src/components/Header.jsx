@@ -26,7 +26,9 @@ export default () => {
         </nav>
         <div className="hidden lg:flex justify-between w-full max-w-[390px]">
           <div className="flex flex-col m-auto">
-            <span>8 (800) 600-45-92</span>
+            <a href="tel:88006004592" className="text-white hover:text-white">
+              8 (800) 600-45-92
+            </a>
             <Link
               to="/contactus"
               className="text-[#A0A0A0] hover:text-white transition-colors hover:scale-110"
@@ -80,7 +82,12 @@ export default () => {
                 Калькулятор БГ
               </Link>
               <div className="flex flex-col m-auto">
-                <span>8 (800) 600-45-92</span>
+                <a
+                  href="tel:88006004592"
+                  className="text-white hover:text-white"
+                >
+                  8 (800) 600-45-92
+                </a>
                 <Link
                   to="/contactus"
                   className="text-[#A0A0A0] hover:text-white transition-colors hover:scale-110"
