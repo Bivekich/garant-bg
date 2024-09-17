@@ -70,27 +70,27 @@ export const Home = () => {
     if (formData.benef == "commercial") {
       // coef = 0.045;
       if (formData.obesp == "yes") {
-        coef = 0.035;
+        coef = 0.0035;
       } else {
         if (formData.fin == "unsatisfactory") {
-          coef = 0.045;
+          coef = 0.0045;
         } else {
-          coef = 0.04;
+          coef = 0.004;
         }
       }
     } else {
       if (formData.obesp == "yes") {
-        coef = 0.025;
+        coef = 0.0025;
       } else {
         if (formData.fin == "unsatisfactory") {
-          coef = 0.035;
+          coef = 0.0035;
         } else {
-          coef = 0.03;
+          coef = 0.003;
         }
       }
     }
 
-    const result = formData.size * (formData.time * coef);
+    const result = Math.round(formData.size * (formData.time * coef));
 
     setResult(result);
   };
@@ -360,7 +360,7 @@ export const Home = () => {
           </div>
         </section>
         <section>
-          <div className="flex flex-col justify-between max-w-[800px] m-auto my-[50px]">
+          <div className="flex flex-col justify-between max-w-[300px] md:max-w-[600px] lg:max-w-[800px] m-auto my-[50px]">
             <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
               Выданные
             </h1>
