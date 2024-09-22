@@ -128,7 +128,7 @@ export default () => {
 
       {/* FAQ Section */}
       <section>
-        <div className="flex flex-col justify-between w-fit m-auto my-[50px]">
+        <div className="flex flex-col justify-between w-fit m-auto my-[50px] max-w-[97vw] px-2">
           <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit mx-auto">
             FA<span className="text-[#FF6402]">Q</span>
           </h1>
