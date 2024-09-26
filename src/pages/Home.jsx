@@ -142,22 +142,14 @@ export const Home = () => {
       console.error("Ошибка при отправке сообщения:", error);
       alert("Ошибка при отправке заявки. Попробуйте снова.");
     }
-    // Clear the form after submission (optional)
-    // settgFormData({
-    //   name: "",
-    //   surname: "",
-    //   phone: "",
-    //   email: "",
-    //   additionalInfo: "",
-    // });
   };
   return (
     <>
       <main>
         <section
-          className="max-w-[1600px] w-full min-h-[600px] rounded-[30px] h-full md:aspect-[16/9] lg:aspect-[16/7] relative p-4 lg:mx-auto"
+          className="max-w-[1600px] w-full min-h-[600px] rounded-[30px] h-full md:aspect-[16/9] lg:aspect-[16/7] relative p-4 lg:mx-auto bg-gray-200"
           style={{
-            backgroundImage: `url("/images/mainPhoto.png")`, // Use template literals for dynamic values
+            backgroundImage: `url("/images/mainPhoto.webp")`, // Use template literals for dynamic values
             backgroundSize: "cover", // Optionally, add size, position, and other properties
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -374,6 +366,7 @@ export const Home = () => {
                 key={index}
                 src={item.image}
                 alt="Банковская гарантия"
+                loading="lazy"
                 className="rounded-[30px] w-[40%] min-w-[300px] max-w-[840px]"
               />
             ))}
@@ -386,10 +379,10 @@ export const Home = () => {
             </h1>
           </div>
           <div className="flex flex-row flex-wrap gap-10 mt-10 justify-between max-w-[1000px] mx-auto">
-            <span className="max-w-[460px] text-3xl text-start mx-auto">
+            <p className="max-w-[460px] text-2xl text-start mx-auto">
               Оставьте заявку, мы свяжемся с вами в течении нескольких минут и
               обсудим вашу проблему
-            </span>
+            </p>
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-5 min-w-[200px] w-full max-w-[500px] mx-auto"

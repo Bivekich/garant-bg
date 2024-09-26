@@ -164,10 +164,10 @@ export default () => {
           </h1>
         </div>
         <div className="flex flex-row flex-wrap gap-10 mt-10 justify-between max-w-[1000px] mx-auto">
-          <span className="max-w-[460px] text-3xl text-start mx-auto">
+          <p className="max-w-[460px] text-2xl text-start mx-auto">
             Оставьте заявку, мы свяжемся с вами в течении нескольких минут и
             обсудим вашу проблему
-          </span>
+          </p>
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-5 min-w-[200px] w-full max-w-[500px] mx-auto"

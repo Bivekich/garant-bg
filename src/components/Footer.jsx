@@ -1,5 +1,22 @@
+import React, { Suspense, lazy } from "react";
 import FooterNavLink from "./FooterNavLink";
-import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+
+// Lazy load YMaps
+const LazyYMaps = lazy(() =>
+  import("@pbe/react-yandex-maps").then((module) => ({
+    default: module.YMaps,
+  }))
+);
+const LazyMap = lazy(() =>
+  import("@pbe/react-yandex-maps").then((module) => ({
+    default: module.Map,
+  }))
+);
+const LazyPlacemark = lazy(() =>
+  import("@pbe/react-yandex-maps").then((module) => ({
+    default: module.Placemark,
+  }))
+);
 
 export default () => {
   return (
@@ -44,31 +61,34 @@ export default () => {
               href="https://api.whatsapp.com/send?phone=79035129685"
               className="bg-white rounded-full w-[50px] h-[50px]"
             >
-              <img src="/images/wa.svg" />
+              <img src="/images/wa.svg" width="50" height="50" />
             </a>
             <a
               href="https://instagram.com/garant_bg?utm_medium=copy_link"
               className="bg-white rounded-full w-[50px] h-[50px]"
             >
-              <img src="/images/inst.svg" />
+              <img src="/images/inst.svg" width="50" height="50" />
             </a>
             <a
               href="https://www.facebook.com/BGgarant/"
               className="bg-white rounded-full w-[50px] h-[50px]"
             >
-              <img src="/images/facebook.svg" />
+              <img src="/images/facebook.svg" width="50" height="50" />
             </a>
           </div>
         </div>
         <div className="map-container">
-          <YMaps>
-            <Map
-              defaultState={{ center: [55.763255, 37.586652], zoom: 15 }}
-              style={{ width: "100vw", maxWidth: "370px", height: "270px" }} // Set explicit styles for width and height
-            >
-              <Placemark geometry={[55.763255, 37.586652]} />
-            </Map>
-          </YMaps>
+          {/* Suspense to handle lazy-loaded components */}
+          <Suspense fallback={<div className="text-white">Loading map...</div>}>
+            <LazyYMaps>
+              <LazyMap
+                defaultState={{ center: [55.763255, 37.586652], zoom: 15 }}
+                style={{ width: "100vw", maxWidth: "370px", height: "270px" }}
+              >
+                <LazyPlacemark geometry={[55.763255, 37.586652]} />
+              </LazyMap>
+            </LazyYMaps>
+          </Suspense>
         </div>
       </footer>
     </>
