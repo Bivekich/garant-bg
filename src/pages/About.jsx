@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getFAQ, getAboutus } from "../sanityclient";
+import { getAboutus } from "../sanityclient";
+import Form from "../components/Form";
 
 export default () => {
   // отправка формы
@@ -56,20 +57,10 @@ export default () => {
     // });
   };
   // Выданные гарантии
-  const [faqElements, setFAQElements] = useState([]);
   const [aboutus, setAboutus] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const faq = await getFAQ();
-
-      if (faq && faq.length > 0) {
-        const faqEls = faq.map((faq_el) => ({
-          question: faq_el.title,
-          answer: faq_el.answer,
-        }));
-        setFAQElements(faqEls);
-      }
       const aboutus_ = await getAboutus();
 
       setAboutus(aboutus_);
@@ -78,34 +69,6 @@ export default () => {
     fetchData();
   }, []);
 
-  let faqQuestions = new Array();
-  let faqAnswers = new Array();
-  let state = new Array();
-  faqElements.map((item) => {
-    state.push(false);
-    faqQuestions.push(item.question);
-    faqAnswers.push(item.answer);
-  });
-
-  // Массив состояний для каждого FAQ элемента
-  const [openFAQ, setOpenFAQ] = useState(state);
-
-  // Функция для переключения конкретного FAQ
-  const toggleFAQ = (index) => {
-    setOpenFAQ((prevState) => {
-      const newOpenState = [...prevState];
-      newOpenState[index] = !newOpenState[index];
-      return newOpenState;
-    });
-  };
-
-  const faqContentStyle = (isOpen) => ({
-    maxHeight: isOpen ? "500px" : "0",
-    opacity: isOpen ? 1 : 0,
-    marginTop: isOpen ? "1.25rem" : "0",
-    overflow: "hidden",
-    transition: "0.4s ease-in-out",
-  });
   return (
     <>
       <section>
@@ -126,106 +89,8 @@ export default () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section>
-        <div className="flex flex-col justify-between w-fit m-auto my-[50px] max-w-[97vw] px-2">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit mx-auto">
-            FA<span className="text-[#FF6402]">Q</span>
-          </h1>
-          <p className="text-3xl">Ответы на часто-задаваемые вопросы</p>
-          <div className="flex flex-col gap-5 my-5">
-            {faqQuestions.map((faq, index) => (
-              <div
-                key={index}
-                className="faq max-w-[530px] flex flex-col rounded-[15px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent cursor-pointer"
-                onClick={() => toggleFAQ(index)}
-              >
-                <div className="flex flex-row flex-nowrap justify-between">
-                  <span className="text-xl">{faq}</span>
-                  <span className="text-xl min-w-[20px] text-[#FF6402]">
-                    {openFAQ[index] ? "-" : "+"}
-                  </span>
-                </div>
-                <p
-                  style={faqContentStyle(openFAQ[index])}
-                  className="text-start"
-                >
-                  {faqAnswers[index]}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section id="form">
-        <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
-            Остались <span className="text-[#FF6402]">Вопросы?</span>
-          </h1>
-        </div>
-        <div className="flex flex-row flex-wrap gap-10 mt-10 justify-between max-w-[1000px] mx-auto">
-          <p className="max-w-[460px] text-2xl text-start mx-auto">
-            Оставьте заявку, мы свяжемся с вами в течении нескольких минут и
-            обсудим вашу проблему
-          </p>
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-5 min-w-[200px] w-full max-w-[500px] mx-auto"
-          >
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-row flex-nowrap gap-5">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Имя"
-                  value={tgformData.name}
-                  onChange={handleChange}
-                  className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                />
-                <input
-                  type="text"
-                  name="surname"
-                  placeholder="Фамилия"
-                  value={tgformData.surname}
-                  onChange={handleChange}
-                  className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                />
-              </div>
-              <div className="flex flex-row flex-nowrap gap-5">
-                <input
-                  type="text"
-                  name="phone"
-                  placeholder="Телефон"
-                  value={tgformData.phone}
-                  onChange={handleChange}
-                  className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  value={tgformData.email}
-                  onChange={handleChange}
-                  className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                />
-              </div>
-            </div>
-            <textarea
-              name="additionalInfo"
-              placeholder="Дополнительная информация"
-              value={tgformData.additionalInfo}
-              onChange={handleChange}
-              className="rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-            ></textarea>
-            <button
-              type="submit"
-              className="text-[#222222] bg-[#FF6402] rounded-[30px] font-bold py-[15px]"
-            >
-              Отправить
-            </button>
-          </form>
-        </div>
-      </section>
+      <section id="form"></section>
+      <Form />
     </>
   );
 };

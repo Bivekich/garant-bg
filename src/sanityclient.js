@@ -39,8 +39,27 @@ export async function getAboutus() {
   const aboutus = await client.fetch(query);
   return aboutus;
 }
+
 export async function getGarantes() {
   const query = `*[_type == "garantes"][0]`;
-  const garantes = await client.fetch(query);
-  return garantes;
+  const result = await client.fetch(query);
+  return result;
+}
+export async function getGarantTypes() {
+  const query = `*[_type == "garantTypes"]`;
+  const result = await client.fetch(query);
+  return result;
+}
+export async function getGarantType(id) {
+  const query = `*[_id == "${id}"][0]`;
+  const result = await client.fetch(query);
+  return result;
+}
+export async function getBanks() {
+  const query = `*[_type == "banks"]{
+  title,
+  "image": image.asset->url
+  }`;
+  const result = await client.fetch(query);
+  return result;
 }

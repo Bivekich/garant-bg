@@ -2,6 +2,7 @@ import "./App.css";
 import Layout from "./Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Garant from "./pages/Garant";
 import Contacts from "./pages/Contacts";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -14,7 +15,8 @@ function App() {
             <Route path="/:anchor?" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contacts" element={<Contacts />} />
-            {/* <Route path="*" element={<NoPage />} /> */}
+            <Route path="garantType/:id" element={<Garant />} />
+            <Route path="*" element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>

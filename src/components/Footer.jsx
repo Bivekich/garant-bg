@@ -61,7 +61,12 @@ export default () => {
               href="https://api.whatsapp.com/send?phone=79035129685"
               className="bg-white rounded-full w-[50px] h-[50px]"
             >
-              <img src="/images/wa.svg" width="50" height="50" />
+              <img
+                title="WhatsApp"
+                src="/images/wa.svg"
+                width="50"
+                height="50"
+              />
             </a>
             <a
               href="https://instagram.com/garant_bg?utm_medium=copy_link"

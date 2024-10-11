@@ -1,7 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getGivedgarantes, urlFor, getGarantes } from "../sanityclient";
-
+import {
+  getGivedgarantes,
+  urlFor,
+  getGarantes,
+  getGarantTypes,
+} from "../sanityclient";
+import FAQ from "../components/FAQ";
+import { Link } from "react-router-dom";
+import Form from "../components/Form";
+import Banks from "../components/Banks";
 export const Home = () => {
   // Скролл до калькулятора
   const { anchor } = useParams();
@@ -25,6 +33,7 @@ export const Home = () => {
   // Выданные гарантии
   const [givedgarantesElements, setGivedgarantesElements] = useState([]);
   const [garantes, setGarantes] = useState([]);
+  const [garantTypes, setGarantTypes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,10 +48,16 @@ export const Home = () => {
       const garantes_ = await getGarantes();
 
       setGarantes(garantes_);
+
+      const garantTypes_ = await getGarantTypes();
+
+      setGarantTypes(garantTypes_);
     };
 
-    fetchData();
+    fetchData(garantTypes);
   }, []);
+
+  console.log(garantTypes);
 
   // Логика калькулятор
   const [formData, setFormData] = useState({
@@ -98,51 +113,6 @@ export const Home = () => {
     setResult("Тут будет результат вычислений");
   }
 
-  // отправка формы
-  const token = "7395952644:AAHKzF7QwKD9bGTWzeyEO-HB62hwmSjj-E8";
-  const chat_id = "-1002354795137"; // Replace with your Telegram chat ID
-  const [tgformData, settgFormData] = useState({
-    name: "",
-    surname: "",
-    phone: "",
-    email: "",
-    additionalInfo: "",
-  });
-
-  // Function to handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    settgFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  // Function to handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // You can send the formData to an API or log it
-    console.log("Form Data:", tgformData);
-
-    // Construct the message to be sent to Telegram
-    const message = `Новая заявка:\nФИО: ${tgformData.surname} ${tgformData.name}\nНомер телефона: ${tgformData.phone}\nПочта: ${tgformData.email} \nДополнительная информация: ${tgformData.additionalInfo}`;
-    const encodedMessage = encodeURIComponent(message);
-    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodedMessage}`;
-
-    try {
-      // Send the message to the Telegram bot
-      const response = await fetch(url);
-
-      if (response.ok) {
-        alert("Заявка успешно отправлена!");
-      } else {
-        alert("Ошибка при отправке заявки. Попробуйте снова.");
-      }
-    } catch (error) {
-      console.error("Ошибка при отправке сообщения:", error);
-      alert("Ошибка при отправке заявки. Попробуйте снова.");
-    }
-  };
   return (
     <>
       <main>
@@ -223,6 +193,47 @@ export const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+        <section>
+          <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit self-center">
+              Виды банковских
+            </h1>
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] text-[#FF6402] w-fit self-center">
+              Гарантий
+            </h1>
+          </div>
+          <div className="flex flex-col gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
+            {garantTypes.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col md:flex-row gap-5 justify-between min-h-40"
+              >
+                <div className="flex flex-col gap-3 w-full md:w-1/2 order-2 md:order-1">
+                  <h3 className="text-4xl font-semibold">
+                    {item.veryShortDescription}
+                  </h3>
+                  <p>{item.shortDescription}</p>
+                  <Link
+                    to={`garantType/${item._id}`}
+                    className="rounded-full text-white text-center text-xl font-semibold h-fit p-3 mr-auto bg-[#FF6402] transition hover:text-white hover:scale-110"
+                  >
+                    Подробнее
+                  </Link>
+                </div>
+                <div className="flex items-center justify-center w-full md:w-1/2 text-3xl font-bold bg-[#FF6402] rounded-2xl min-h-40 order-1 md:order-2">
+                  {item.title}
+                </div>
+              </div>
+            ))}
+            {/* <p>{garantes.par1}</p>
+            <div>
+              <p>{garantes.par2}</p>
+            </div>
+            <p>{garantes.par3}</p>
+            <p>{garantes.par4}</p>
+            <p>{garantes.par5}</p> */}
           </div>
         </section>
         <section ref={blocks.calc}>
@@ -332,25 +343,7 @@ export const Home = () => {
             </div>
           </form>
         </section>
-        <section>
-          <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit self-center">
-              Виды банковских
-            </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] text-[#FF6402] w-fit self-center">
-              Гарантий
-            </h1>
-          </div>
-          <div className="flex flex-col gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
-            <p>{garantes.par1}</p>
-            <div>
-              <p>{garantes.par2}</p>
-            </div>
-            <p>{garantes.par3}</p>
-            <p>{garantes.par4}</p>
-            <p>{garantes.par5}</p>
-          </div>
-        </section>
+
         <section>
           <div className="flex flex-col justify-between max-w-[300px] md:max-w-[600px] lg:max-w-[800px] m-auto my-[50px]">
             <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
@@ -372,75 +365,10 @@ export const Home = () => {
             ))}
           </div>
         </section>
-        <section id="form" ref={blocks.contactus}>
-          <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
-              Остались <span className="text-[#FF6402]">Вопросы?</span>
-            </h1>
-          </div>
-          <div className="flex flex-row flex-wrap gap-10 mt-10 justify-between max-w-[1000px] mx-auto">
-            <p className="max-w-[460px] text-2xl text-start mx-auto">
-              Оставьте заявку, мы свяжемся с вами в течении нескольких минут и
-              обсудим вашу проблему
-            </p>
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-5 min-w-[200px] w-full max-w-[500px] mx-auto"
-            >
-              <div className="flex flex-col gap-5">
-                <div className="flex flex-row flex-nowrap gap-5">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Имя"
-                    value={tgformData.name}
-                    onChange={handleChange}
-                    className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                  />
-                  <input
-                    type="text"
-                    name="surname"
-                    placeholder="Фамилия"
-                    value={tgformData.surname}
-                    onChange={handleChange}
-                    className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                  />
-                </div>
-                <div className="flex flex-row flex-nowrap gap-5">
-                  <input
-                    type="text"
-                    name="phone"
-                    placeholder="Телефон"
-                    value={tgformData.phone}
-                    onChange={handleChange}
-                    className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                    value={tgformData.email}
-                    onChange={handleChange}
-                    className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-                  />
-                </div>
-              </div>
-              <textarea
-                name="additionalInfo"
-                placeholder="Дополнительная информация"
-                value={tgformData.additionalInfo}
-                onChange={handleChange}
-                className="rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
-              ></textarea>
-              <button
-                type="submit"
-                className="text-[#222222] bg-[#FF6402] rounded-[30px] font-bold py-[15px]"
-              >
-                Отправить
-              </button>
-            </form>
-          </div>
-        </section>
+        <Banks />
+        <FAQ />
+        <section id="form" ref={blocks.contactus}></section>
+        <Form />
       </main>
     </>
   );
