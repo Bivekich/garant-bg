@@ -3,7 +3,7 @@ export default () => {
     <>
       <section>
         <div className="flex flex-col justify-between w-fit m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
+          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
             Контакты
           </h1>
         </div>
@@ -96,25 +96,43 @@ export default () => {
                 </svg>
                 Наши соц-сети
               </span>
-              <div className="flex flex-row gap-5">
-                <a
-                  href="https://api.whatsapp.com/send?phone=79035129685"
-                  className="bg-[#383838] rounded-full w-[50px] h-[50px]"
-                >
-                  <img src="/images/wa_black.svg" />
-                </a>
-                <a
-                  href="https://instagram.com/garant_bg?utm_medium=copy_link"
-                  className="bg-[#383838] rounded-full w-[50px] h-[50px]"
-                >
-                  <img src="/images/inst_black.svg" />
-                </a>
-                <a
-                  href="https://www.facebook.com/BGgarant/"
-                  className="bg-[#383838] rounded-full w-[50px] h-[50px]"
-                >
-                  <img src="/images/facebook_black.svg" />
-                </a>
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-row gap-3 font-bold text-xl items-center">
+                  <a
+                    href="https://api.whatsapp.com/send?phone=79035129685"
+                    className="bg-white rounded-full w-[50px] h-[50px]"
+                  >
+                    <img
+                      title="WhatsApp"
+                      src="/images/wa_black.svg"
+                      width="50"
+                      height="50"
+                    />
+                  </a>
+                  WhatsApp
+                </div>
+                <div className="flex flex-row gap-3 font-bold text-xl items-center">
+                  <a
+                    href="https://instagram.com/garant_bg?utm_medium=copy_link"
+                    className="bg-white rounded-full w-[50px] h-[50px]"
+                  >
+                    <img src="/images/inst_black.svg" width="50" height="50" />
+                  </a>
+                  Instagram
+                </div>
+                <div className="flex flex-row gap-3 font-bold text-xl items-center">
+                  <a
+                    href="https://www.facebook.com/BGgarant/"
+                    className="bg-white rounded-full w-[50px] h-[50px]"
+                  >
+                    <img
+                      src="/images/facebook_black.svg"
+                      width="50"
+                      height="50"
+                    />
+                  </a>
+                  Facebook
+                </div>
               </div>
             </div>
           </div>

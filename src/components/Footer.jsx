@@ -49,37 +49,46 @@ export default () => {
             </span>
           </div>
         </div>
-        <div className="flex flex-col gap-5 mt-5">
-          <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mt-5">
+          <div className="flex flex-col gap-1">
             <FooterNavLink to="/">Главная</FooterNavLink>
             <FooterNavLink to="/about">О нас</FooterNavLink>
             <FooterNavLink to="/contacts">Контакты</FooterNavLink>
             <FooterNavLink to="/calc">Калькулятор БГ</FooterNavLink>
           </div>
-          <div className="flex flex-row gap-5">
-            <a
-              href="https://api.whatsapp.com/send?phone=79035129685"
-              className="bg-white rounded-full w-[50px] h-[50px]"
-            >
-              <img
-                title="WhatsApp"
-                src="/images/wa.svg"
-                width="50"
-                height="50"
-              />
-            </a>
-            <a
-              href="https://instagram.com/garant_bg?utm_medium=copy_link"
-              className="bg-white rounded-full w-[50px] h-[50px]"
-            >
-              <img src="/images/inst.svg" width="50" height="50" />
-            </a>
-            <a
-              href="https://www.facebook.com/BGgarant/"
-              className="bg-white rounded-full w-[50px] h-[50px]"
-            >
-              <img src="/images/facebook.svg" width="50" height="50" />
-            </a>
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-row gap-3 font-bold text-xl items-center">
+              <a
+                href="https://api.whatsapp.com/send?phone=79035129685"
+                className="bg-white rounded-full w-[30px] h-[30px]"
+              >
+                <img
+                  title="WhatsApp"
+                  src="/images/wa.svg"
+                  width="30"
+                  height="30"
+                />
+              </a>
+              WhatsApp
+            </div>
+            <div className="flex flex-row gap-3 font-bold text-xl items-center">
+              <a
+                href="https://instagram.com/garant_bg?utm_medium=copy_link"
+                className="bg-white rounded-full w-[30px] h-[30px]"
+              >
+                <img src="/images/inst.svg" width="30" height="30" />
+              </a>
+              Instagram
+            </div>
+            <div className="flex flex-row gap-3 font-bold text-xl items-center">
+              <a
+                href="https://www.facebook.com/BGgarant/"
+                className="bg-white rounded-full w-[30px] h-[30px]"
+              >
+                <img src="/images/facebook.svg" width="30" height="30" />
+              </a>
+              Facebook
+            </div>
           </div>
         </div>
         <div className="map-container">

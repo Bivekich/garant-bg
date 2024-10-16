@@ -21,10 +21,10 @@ const Banks = () => {
     <>
       <div className="flex flex-col w-fit my-10 gap-5 mx-auto">
         <div className="flex flex-col justify-between w-full max-w-[300px] md:max-w-[600px] lg:max-w-[800px] m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] w-fit">
+          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
             Сотрудничаем
           </h1>
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[100px] text-[#FF6402] w-fit self-end">
+          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-end">
             с банками
           </h1>
         </div>
