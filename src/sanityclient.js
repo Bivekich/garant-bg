@@ -45,6 +45,11 @@ export async function getGarantes() {
   const result = await client.fetch(query);
   return result;
 }
+export async function gettitlegarantes() {
+  const query = `*[_type == "titlegarantes"][0]`;
+  const result = await client.fetch(query);
+  return result;
+}
 export async function getGarantTypes() {
   const query = `*[_type == "garantTypes"]`;
   const result = await client.fetch(query);

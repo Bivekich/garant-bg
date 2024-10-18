@@ -4,4 +4,4 @@ Disallow: /temp/
 
 Allow: /
 
-Sitemap: https://www.garant-bg.ru/sitemap.xml
+Sitemap: https://garant-bg.ru/sitemap.xml

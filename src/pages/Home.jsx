@@ -5,6 +5,7 @@ import {
   urlFor,
   getGarantes,
   getGarantTypes,
+  gettitlegarantes,
 } from "../sanityclient";
 import FAQ from "../components/FAQ";
 import { Link } from "react-router-dom";
@@ -33,6 +34,7 @@ export const Home = () => {
   // Выданные гарантии
   const [givedgarantesElements, setGivedgarantesElements] = useState([]);
   const [garantes, setGarantes] = useState([]);
+  const [titlegarantes, settitlegarantes] = useState([]);
   const [garantTypes, setGarantTypes] = useState([]);
 
   useEffect(() => {
@@ -52,6 +54,10 @@ export const Home = () => {
       const garantTypes_ = await getGarantTypes();
 
       setGarantTypes(garantTypes_);
+
+      const titlegarantes_ = await gettitlegarantes();
+
+      settitlegarantes(titlegarantes_);
     };
 
     fetchData(garantTypes);
@@ -198,10 +204,10 @@ export const Home = () => {
         <section>
           <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
             <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
-              Виды банковских
+              {titlegarantes.title}
             </h1>
             <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
-              Гарантий
+              {titlegarantes.title1}
             </h1>
           </div>
           <div className="flex flex-row flex-wrap gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
