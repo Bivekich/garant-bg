@@ -203,12 +203,12 @@ export const Home = () => {
         </section>
         <section>
           <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
+            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
               {titlegarantes.title}
-            </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
+            </h2>
+            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
               {titlegarantes.title1}
-            </h1>
+            </h2>
           </div>
           <div className="flex flex-row flex-wrap gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
             {garantTypes.map((item, index) => (
@@ -217,11 +217,13 @@ export const Home = () => {
                 className="flex flex-col md:flex-row gap-5 justify-between min-h-40 md:w-1/2"
               >
                 <div className="flex flex-col gap-3 w-full order-2 md:order-1">
-                  <h2 className="text-4xl font-bold">{item.title}</h2>
-                  <h3 className="text-3xl font-semibold">
+                  <h3 className="text-4xl font-bold">{item.title}</h3>
+                  <h4 className="text-3xl font-semibold">
                     {item.veryShortDescription}
-                  </h3>
-                  <p>{item.shortDescription}</p>
+                  </h4>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: item.shortDescription }}
+                  />
                   <Link
                     to={`garantType/${item._id}`}
                     className="rounded-full text-white text-center text-xl font-semibold h-fit p-3 mr-auto bg-[#FF6402] transition hover:text-white hover:scale-110"
@@ -242,9 +244,9 @@ export const Home = () => {
         </section>
         <section ref={blocks.calc}>
           <div className="flex flex-col justify-between my-10">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px]">
+            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px]">
               Калькулятор БГ
-            </h1>
+            </h2>
           </div>
           <form
             name="myform"
@@ -350,12 +352,12 @@ export const Home = () => {
 
         <section>
           <div className="flex flex-col justify-between max-w-[300px] md:max-w-[600px] lg:max-w-[800px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
+            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
               Выданные
-            </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-end">
+            </h2>
+            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-end">
               Гарантии
-            </h1>
+            </h2>
           </div>
           <div className="flex flex-row flex-wrap w-full max-w-[1710px] justify-center gap-[28px] m-auto">
             {givedgarantesElements.map((item, index) => (

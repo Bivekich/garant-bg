@@ -36,7 +36,10 @@ const Garant = () => {
             {item.title}
           </div>
         </div>
-        <p className="mt-5 text-start font-base">{item.description}</p>
+        <p
+          className="mt-5 text-start font-base"
+          dangerouslySetInnerHTML={{ __html: item.description }}
+        />
       </main>
       <Form />
     </>
