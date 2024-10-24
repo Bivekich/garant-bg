@@ -136,12 +136,12 @@ export const Home = () => {
             style={{ backgroundColor: "rgba(0, 0, 0, .17)" }}
           ></div>
           <div className="flex flex-col justify-between max-w-[950px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
+            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
               Ваше доверие -
-            </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
+            </h4>
+            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
               Наша <span className="text-[#FF6402]">гарантия</span>
-            </h1>
+            </h4>
           </div>
           <div className="absolute left-0 bottom-0 w-full flex-wrap">
             <a
@@ -203,12 +203,12 @@ export const Home = () => {
         </section>
         <section>
           <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
+            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
               {titlegarantes.title}
-            </h2>
-            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
+            </h4>
+            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
               {titlegarantes.title1}
-            </h2>
+            </h4>
           </div>
           <div className="flex flex-row flex-wrap gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
             {garantTypes.map((item, index) => (
@@ -217,10 +217,10 @@ export const Home = () => {
                 className="flex flex-col md:flex-row gap-5 justify-between min-h-40 md:w-1/2"
               >
                 <div className="flex flex-col gap-3 w-full order-2 md:order-1">
-                  <h3 className="text-4xl font-bold">{item.title}</h3>
-                  <h4 className="text-3xl font-semibold">
+                  <h2 className="text-4xl font-bold">{item.title}</h2>
+                  <h3 className="text-3xl font-semibold">
                     {item.veryShortDescription}
-                  </h4>
+                  </h3>
                   <p
                     dangerouslySetInnerHTML={{ __html: item.shortDescription }}
                   />
@@ -244,9 +244,9 @@ export const Home = () => {
         </section>
         <section ref={blocks.calc}>
           <div className="flex flex-col justify-between my-10">
-            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px]">
+            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px]">
               Калькулятор БГ
-            </h2>
+            </h4>
           </div>
           <form
             name="myform"
@@ -352,12 +352,12 @@ export const Home = () => {
 
         <section>
           <div className="flex flex-col justify-between max-w-[300px] md:max-w-[600px] lg:max-w-[800px] m-auto my-[50px]">
-            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
+            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
               Выданные
-            </h2>
-            <h2 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-end">
+            </h4>
+            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-end">
               Гарантии
-            </h2>
+            </h4>
           </div>
           <div className="flex flex-row flex-wrap w-full max-w-[1710px] justify-center gap-[28px] m-auto">
             {givedgarantesElements.map((item, index) => (

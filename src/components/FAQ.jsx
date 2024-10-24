@@ -50,9 +50,9 @@ const FAQ = () => {
   return (
     <section>
       <div className="flex flex-col justify-between w-fit m-auto my-[50px] max-w-[97vw] px-2">
-        <h1 className="uppercase font-[BebasNeueLatin] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit mx-auto">
+        <h4 className="uppercase font-[BebasNeueLatin] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit mx-auto">
           FA<span className="text-[#FF6402]">Q</span>
-        </h1>
+        </h4>
         <p className="text-3xl">Ответы на часто-задаваемые вопросы</p>
         <div className="flex flex-col gap-5 my-5">
           {faqQuestions.map((faq, index) => (

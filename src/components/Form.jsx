@@ -50,9 +50,9 @@ const Form = () => {
     <>
       <section>
         <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-          <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
+          <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
             Остались <span className="text-[#FF6402]">Вопросы</span>
-          </h1>
+          </h4>
         </div>
         <div className="flex flex-row flex-wrap gap-10 mt-10 justify-between max-w-[1000px] mx-auto">
           <p className="max-w-[460px] text-2xl text-start mx-auto">
