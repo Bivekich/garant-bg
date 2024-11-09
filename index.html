@@ -65,13 +65,26 @@
   <body>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i] function(){(m[i].a=m[i].a[]).push(arguments)};
-          m[i].l=1*new Date();
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','//mc.yandex.ru/metrika/tag.js', 'ym');
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        (k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a);
+      })(window, document, "script", "//mc.yandex.ru/metrika/tag.js", "ym");
 
-      ym(88926684, 'init', {accurateTrackBounce:true, trackLinks:true, clickmap:true, params: {__ym: {isFromApi: 'yesIsFromApi'}}});
+      ym(88926684, "init", {
+        accurateTrackBounce: true,
+        trackLinks: true,
+        clickmap: true,
+        params: { __ym: { isFromApi: "yesIsFromApi" } },
+      });
     </script>
     <noscript
       ><div>
@@ -99,7 +112,7 @@
 
     <div id="root"></div>
 
-    <div class="hidden">
+    <!-- <div class="hidden">
       <p>
         В современной экономике банковская гарантия играют важную роль, особенно
         в сфере государственных закупок и исполнения государственных контрактов.
@@ -373,7 +386,7 @@
         будущих успехов.
       </p>
     </div>
-
+ -->
     <!-- Main Script -->
     <script type="module" src="/src/main.jsx"></script>
   </body>

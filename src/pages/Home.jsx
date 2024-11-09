@@ -203,12 +203,12 @@ export const Home = () => {
         </section>
         <section>
           <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
               {titlegarantes.title}
-            </h4>
-            <h4 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
+            </h1>
+            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
               {titlegarantes.title1}
-            </h4>
+            </h1>
           </div>
           <div className="flex flex-row flex-wrap gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
             {garantTypes.map((item, index) => (
@@ -217,13 +217,48 @@ export const Home = () => {
                 className="flex flex-col md:flex-row gap-5 justify-between min-h-40 md:w-1/2"
               >
                 <div className="flex flex-col gap-3 w-full order-2 md:order-1">
-                  <h2 className="text-4xl font-bold">{item.title}</h2>
-                  <h3 className="text-3xl font-semibold">
-                    {item.veryShortDescription}
-                  </h3>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: item.shortDescription }}
-                  />
+                  {/* Map over contentBlocks */}
+                  {item.contentBlocks &&
+                    item.contentBlocks.map((block, idx) => {
+                      switch (block.type) {
+                        case "h2":
+                          return (
+                            <h2 key={idx} className="text-4xl font-bold">
+                              {block.contentString}
+                            </h2>
+                          );
+                        case "h3":
+                          return (
+                            <h3 key={idx} className="text-3xl font-semibold">
+                              {block.contentString.length > 50
+                                ? `${block.contentString.slice(0, 50)}...`
+                                : block.contentString}
+                            </h3>
+                          );
+                        case "p":
+                          return (
+                            <p
+                              key={idx}
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  block.content.length > 100
+                                    ? `${block.content.slice(0, 100)}...`
+                                    : block.content,
+                              }}
+                            />
+                          );
+                        case "text":
+                          return (
+                            <div key={idx} className="text-lg leading-7">
+                              {block.contentString}
+                            </div>
+                          );
+                        default:
+                          return null;
+                      }
+                    })}
+
+                  {/* Link to Full Article */}
                   <Link
                     to={`garantType/${item._id}`}
                     className="rounded-full text-white text-center text-xl font-semibold h-fit p-3 mr-auto bg-[#FF6402] transition hover:text-white hover:scale-110"
@@ -233,13 +268,6 @@ export const Home = () => {
                 </div>
               </div>
             ))}
-            {/* <p>{garantes.par1}</p>
-            <div>
-              <p>{garantes.par2}</p>
-            </div>
-            <p>{garantes.par3}</p>
-            <p>{garantes.par4}</p>
-            <p>{garantes.par5}</p> */}
           </div>
         </section>
         <section ref={blocks.calc}>
