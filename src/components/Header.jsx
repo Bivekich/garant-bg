@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 
-export default () => {
+const Header = () => {
   // Состояние для отображения мобильного меню
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -22,7 +22,7 @@ export default () => {
         <nav className="hidden lg:flex justify-between max-w-[330px] w-full">
           <NavLink to="/">Главная</NavLink>
           <NavLink to="/about">О нас</NavLink>
-          <NavLink to="/contacts">Контакты</NavLink>
+          <NavLink to="/info">Инфо</NavLink>
         </nav>
         <div className="hidden lg:flex justify-between w-full max-w-[390px]">
           <div className="flex flex-col m-auto">
@@ -72,7 +72,7 @@ export default () => {
           <nav className="flex flex-col space-y-4 text-center">
             <NavLink to="/">Главная</NavLink>
             <NavLink to="/about">О нас</NavLink>
-            <NavLink to="/contacts">Контакты</NavLink>
+            <NavLink to="/info">Инфо</NavLink>
 
             <div className="flex flex-col justify-between gap-5 w-full max-w-[390px]">
               <Link
@@ -102,3 +102,5 @@ export default () => {
     </>
   );
 };
+
+export default Header;

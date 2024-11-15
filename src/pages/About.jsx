@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getAboutus } from "../sanityclient";
 import Form from "../components/Form";
 
-export default () => {
+const About = () => {
   // отправка формы
   const token = "7395952644:AAHKzF7QwKD9bGTWzeyEO-HB62hwmSjj-E8";
   const chat_id = "-1002354795137"; // Replace with your Telegram chat ID
@@ -88,9 +88,10 @@ export default () => {
           />
         </div>
       </section>
-
       <section id="form"></section>
       <Form />
     </>
   );
 };
+
+export default About;

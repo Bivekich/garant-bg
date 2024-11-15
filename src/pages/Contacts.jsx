@@ -1,7 +1,9 @@
-export default () => {
+import GarantTypes from "../components/GarantTypes";
+
+const Contacts = () => {
   return (
     <>
-      <section>
+      {/* <section>
         <div className="flex flex-col justify-between w-fit m-auto my-[50px]">
           <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit">
             Контакты
@@ -137,7 +139,10 @@ export default () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <GarantTypes />
     </>
   );
 };
+
+export default Contacts;

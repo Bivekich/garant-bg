@@ -1,12 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  getGivedgarantes,
-  urlFor,
-  getGarantes,
-  getGarantTypes,
-  gettitlegarantes,
-} from "../sanityclient";
+import { getGivedgarantes, urlFor } from "../sanityclient";
 import FAQ from "../components/FAQ";
 import { Link } from "react-router-dom";
 import Form from "../components/Form";
@@ -33,9 +27,6 @@ export const Home = () => {
 
   // Выданные гарантии
   const [givedgarantesElements, setGivedgarantesElements] = useState([]);
-  const [garantes, setGarantes] = useState([]);
-  const [titlegarantes, settitlegarantes] = useState([]);
-  const [garantTypes, setGarantTypes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,23 +38,10 @@ export const Home = () => {
         }));
         setGivedgarantesElements(givedgarantesEls);
       }
-      const garantes_ = await getGarantes();
-
-      setGarantes(garantes_);
-
-      const garantTypes_ = await getGarantTypes();
-
-      setGarantTypes(garantTypes_);
-
-      const titlegarantes_ = await gettitlegarantes();
-
-      settitlegarantes(titlegarantes_);
     };
 
-    fetchData(garantTypes);
+    fetchData();
   }, []);
-
-  console.log(garantTypes);
 
   // Логика калькулятор
   const [formData, setFormData] = useState({
@@ -199,75 +177,6 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section>
-          <div className="flex flex-col justify-between max-w-[1000px] m-auto my-[50px]">
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] w-fit self-center">
-              {titlegarantes.title}
-            </h1>
-            <h1 className="uppercase font-[BebasNeuee] font-bold text-[40px] md:text-[75px] lg:text-[90px] text-[#FF6402] w-fit self-center">
-              {titlegarantes.title1}
-            </h1>
-          </div>
-          <div className="flex flex-row flex-wrap gap-3 text-left text-[20px] max-w-[1000px] mx-auto">
-            {garantTypes.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row gap-5 justify-between min-h-40 md:w-1/2"
-              >
-                <div className="flex flex-col gap-3 w-full order-2 md:order-1">
-                  {/* Map over contentBlocks */}
-                  {item.contentBlocks &&
-                    item.contentBlocks.map((block, idx) => {
-                      switch (block.type) {
-                        case "h2":
-                          return (
-                            <h2 key={idx} className="text-4xl font-bold">
-                              {block.contentString}
-                            </h2>
-                          );
-                        case "h3":
-                          return (
-                            <h3 key={idx} className="text-3xl font-semibold">
-                              {block.contentString.length > 50
-                                ? `${block.contentString.slice(0, 50)}...`
-                                : block.contentString}
-                            </h3>
-                          );
-                        case "p":
-                          return (
-                            <p
-                              key={idx}
-                              dangerouslySetInnerHTML={{
-                                __html:
-                                  block.content.length > 100
-                                    ? `${block.content.slice(0, 100)}...`
-                                    : block.content,
-                              }}
-                            />
-                          );
-                        case "text":
-                          return (
-                            <div key={idx} className="text-lg leading-7">
-                              {block.contentString}
-                            </div>
-                          );
-                        default:
-                          return null;
-                      }
-                    })}
-
-                  {/* Link to Full Article */}
-                  <Link
-                    to={`garantType/${item._id}`}
-                    className="rounded-full text-white text-center text-xl font-semibold h-fit p-3 mr-auto bg-[#FF6402] transition hover:text-white hover:scale-110"
-                  >
-                    Подробнее
-                  </Link>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
         <section ref={blocks.calc}>

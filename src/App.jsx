@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="/:anchor?" element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="contacts" element={<Contacts />} />
+            <Route path="info" element={<Contacts />} />
             <Route path="garantType/:id" element={<Garant />} />
             <Route path="*" element={<Home />} />
           </Route>
