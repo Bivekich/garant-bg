@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useState } from "react";
 
 const Form = () => {
   // отправка формы
@@ -11,6 +11,7 @@ const Form = () => {
     email: "",
     additionalInfo: "",
   });
+  const [dataAgreement, setDataAgreement] = useState(false);
 
   // Function to handle input changes
   const handleChange = (e) => {
@@ -21,9 +22,20 @@ const Form = () => {
     }));
   };
 
+  // Function to handle checkbox change
+  const handleCheckboxChange = () => {
+    setDataAgreement(!dataAgreement);
+  };
+
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!dataAgreement) {
+      alert("Пожалуйста, подтвердите согласие на обработку персональных данных");
+      return;
+    }
+    
     // You can send the formData to an API or log it
     console.log("Form Data:", tgformData);
 
@@ -38,6 +50,15 @@ const Form = () => {
 
       if (response.ok) {
         alert("Заявка успешно отправлена!");
+        // Сбросить форму
+        settgFormData({
+          name: "",
+          surname: "",
+          phone: "",
+          email: "",
+          additionalInfo: "",
+        });
+        setDataAgreement(false);
       } else {
         alert("Ошибка при отправке заявки. Попробуйте снова.");
       }
@@ -71,6 +92,7 @@ const Form = () => {
                   placeholder="Имя"
                   value={tgformData.name}
                   onChange={handleChange}
+                  required
                   className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
                 />
                 <input
@@ -79,6 +101,7 @@ const Form = () => {
                   placeholder="Фамилия"
                   value={tgformData.surname}
                   onChange={handleChange}
+                  required
                   className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
                 />
               </div>
@@ -89,6 +112,7 @@ const Form = () => {
                   placeholder="Телефон"
                   value={tgformData.phone}
                   onChange={handleChange}
+                  required
                   className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
                 />
                 <input
@@ -97,6 +121,7 @@ const Form = () => {
                   placeholder="E-mail"
                   value={tgformData.email}
                   onChange={handleChange}
+                  required
                   className="w-full rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
                 />
               </div>
@@ -108,6 +133,20 @@ const Form = () => {
               onChange={handleChange}
               className="rounded-[30px] px-[15px] py-[10px] border-[#383838] border-4 bg-transparent placeholder:text-white placeholder:font-semibold"
             ></textarea>
+            
+            <div className="flex items-start mt-2">
+              <input
+                type="checkbox"
+                id="dataAgreement"
+                checked={dataAgreement}
+                onChange={handleCheckboxChange}
+                className="mt-1"
+              />
+              <label htmlFor="dataAgreement" className="ml-2 text-sm">
+                Я согласен с <a href="/documents/terms-of-use.html" target="_blank" className="text-[#FF6402]">пользовательским соглашением</a>, <a href="/documents/privacy-policy.html" target="_blank" className="text-[#FF6402]">политикой конфиденциальности</a> и даю <a href="/documents/personal-data-agreement.html" target="_blank" className="text-[#FF6402]">согласие на обработку персональных данных</a>
+              </label>
+            </div>
+            
             <button
               type="submit"
               className="text-[#222222] bg-[#FF6402] rounded-[30px] font-bold py-[15px]"
